@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { FaUser, FaNotesMedical, FaCalendarCheck } from "react-icons/fa";
 import { ClipLoader } from "react-spinners";
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 function BookingForm() {
   const { doctorId, date } = useParams();
   const [patientName, setPatientName] = useState("");
@@ -19,7 +20,7 @@ function BookingForm() {
     setMessage(null);
     setError(null);
     try {
-      await axios.post("http://localhost:3000/appointments", {
+      await axios.post(`${backendUrl}/appointments`, {
         doctorId,
         date: new Date(`${date}T09:00:00.000Z`),
         duration: 30,

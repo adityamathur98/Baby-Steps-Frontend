@@ -5,6 +5,8 @@ import { useParams, Link } from "react-router-dom";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
+
 const Calendar = () => {
   const { doctorId } = useParams();
   const [date, setDate] = useState(new Date());
@@ -14,7 +16,7 @@ const Calendar = () => {
   useEffect(() => {
     axios
       .get(
-        `http://localhost:3000/doctors/${doctorId}/slots?date=${
+        `${backendUrl}/doctors/${doctorId}/slots?date=${
           date.toISOString().split("T")[0]
         }`
       )

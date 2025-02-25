@@ -1,12 +1,13 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
+const backendUrl = import.meta.env.VITE_BACKEND_URL;
 function Appointments() {
   const [appointments, setAppointments] = useState([]);
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/appointments")
+      .get(`${backendUrl}/appointments`)
       .then((response) => {
         setAppointments(response.data);
       })

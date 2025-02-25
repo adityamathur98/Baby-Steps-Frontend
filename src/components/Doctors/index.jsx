@@ -7,10 +7,11 @@ import { FaUserMd, FaClock } from "react-icons/fa";
 const Doctors = () => {
   const [doctors, setDoctors] = useState([]);
   const [error, setError] = useState(null);
+  const backendUrl = import.meta.env.VITE_BACKEND_URL;
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/doctors")
+      .get(`${backendUrl}/doctors`)
       .then((response) => {
         setDoctors(response.data);
       })
