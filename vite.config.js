@@ -6,7 +6,8 @@ import tailwindcss from "@tailwindcss/vite";
 export default defineConfig({
   plugins: [react(), tailwindcss()],
   server: {
-    host: '0.0.0.0',  // Allows Vite to bind to all network interfaces (for external access)
-    port: process.env.PORT || 3000, // Use the PORT environment variable on Render
+    host: '0.0.0.0',  // Binds to all interfaces (external access)
+    port: process.env.PORT || 3000, // Uses the dynamic port from Render
+    allowedHosts: ['baby-steps-frontend.onrender.com'],  // Allow requests from this frontend URL
   },
 });
